@@ -6,7 +6,7 @@ import AddModal from "./AddModal";
 import {useState} from "react"
 
 
-const Doctors = () => {
+const Doctors = ({handleAdd}) => {
   const [show, setShow] = useState(false);
   const [drName, setDrName] = useState("")
 
@@ -22,7 +22,7 @@ const Doctors = () => {
       <Row>
     
         {doctorData.map(({id,img,dep,name})=> (
-            <Col key={id}>
+            <Col xs={6} md={4} lg={3} key={id}>
             <img src={img} alt={name}
             className="img-thumbnail doctor-img" 
             onClick={()=>handleShow(name)}/>
@@ -32,8 +32,11 @@ const Doctors = () => {
             </Col>
         ))}
       </Row>
-      <AddModal handleClose={handleClose} show={show}
-      drName={drName}/>
+      <AddModal 
+      handleClose={handleClose} 
+      show={show}
+      drName={drName}
+      handleAdd={handleAdd}/>
     </Container>
   )
 }
